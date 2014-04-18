@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Embedding and print PDF!</title>
+
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript">
+
+function printTrigger(elementId) {
+	alert("print pdf!!");
+    var getMyFrame = document.getElementById(elementId);
+    getMyFrame.focus();
+    getMyFrame.contentWindow.print();
+}
+
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print({bUI: false, bSilent: true, bShrinkToFit: true});
+
+     document.body.innerHTML = originalContents;
+}
+
+function printFrame(id) {
+            var frm = document.getElementById(id).contentWindow;
+            frm.focus();// focus on contentWindow is needed on some ie versions
+            frm.print();
+            return false;
+}
+
+</script>
+
+<script type="text/javascript" language=JavaScript>
+    function CheckIsIE()
+    {
+        if (navigator.appName.toUpperCase() == 'MICROSOFT INTERNET EXPLORER') 
+            { return true;  }
+        else 
+            { return false; }
+    }
+    function PrintThisPage()
+    {
+         if (CheckIsIE() == true)
+         {
+            document.content.focus();
+            document.content.print();
+         }
+         else
+         {
+            window.frames['iFramePdf'].focus();
+            window.frames['iFramePdf'].print();
+         }
+     }
+	 
+	 
+	function printDocument(documentId) {
+        var x = document.getElementById(documentId);
+		x.focus();
+		x.contentWindow.print(false);
+	}
+	
+	function PrintIframe() { 
+
+            window.frames['iFramePdf'].focus();
+            window.frames['iFramePdf'].print();   
+    }
+	
+	
+	 
+</script> 
+
+
+
+
+</head>
+
+<body>
+<h1>Embedding a PDF using PDFObject: Simplest example!</h1>
+<p>This example uses one line of JavaScript wrapped in a <em>window.onload</em> statement.</p>
+
+<iframe id="iFramePdf" src="sample.pdf" width="100%" height="100%" style="dispaly:none;"></iframe>
+
+<embed
+    type="application/pdf"
+    src="sample.pdf"
+    id="pdfDocument"
+    width="100%"
+    height="100%">
+</embed>
+
+<br><br>
+
+<input type="button" onclick="printDiv('iFramePdf');"  value="printDiv(divName)" />
+
+<br><br>
+
+<input type="button" onclick="printFrame('iFramePdf')" value="printFrame(id)" />
+
+<br><br>
+
+<input type="button" onclick="PrintThisPage()" value="PrintThisPage()" />
+
+<br><br>
+
+<input type="button" onclick="printDocument('pdfDocument')" value="printDocument('iFramePdf')" />
+
+<br><br>
+
+<input type="button" value="Print" onclick="document.getElementById('iFramePdf').focus(); document.getElementById('iFramePdf').contentWindow.print(bUI: false, bSilent: true);">
+
+<br><br>
+
+<input type="button" value="PrintIframe();" onclick="PrintIframe();" on>
+
+<br><br>
+
+<a href="http://www.zksoftware.com.ar/brochures/zk-iclock700-id.pdf" onclick="window.print();return false">Print File</a>
+
+
+<script type="text/javascript" src="https://cdn.widgetserver.com/syndication/subscriber/InsertWidget.js"></script><script type="text/javascript">if (WIDGETBOX) WIDGETBOX.renderWidget('71067ba3-caec-48c1-87d7-76d1a3476826');</script>
+<noscript>Get the <a href="https://www.widgetbox.com/widget/google-docs-viewer">Google Docs Viewer</a> widget and many other <a href="https://www.widgetbox.com/">great free widgets</a> at <a href="https://www.widgetbox.com">Widgetbox</a>! Not seeing a widget? (<a href="http://support.widgetbox.com/">More info</a>)</noscript>
+
+</body>
+
+</html>

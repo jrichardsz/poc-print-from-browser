@@ -1,0 +1,174 @@
+<html moznomarginboxes="" mozdisallowselectionprint="" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+    <title>sample - sample.pdf</title>
+
+<!-- This snippet is used in firefox extension, see Makefile -->
+<base href="resource://pdf.js/web/">
+<script src="l10n.js" type="text/javascript"></script>
+<script src="../build/pdf.js" type="text/javascript"></script>
+
+
+    <link href="viewer.css" rel="stylesheet">
+
+
+
+
+
+    <script src="debugger.js" type="text/javascript"></script>
+    <script src="viewer.js" type="text/javascript"></script>
+  <style id="PDFJS_FONT_STYLE_TAG"></style></head>
+
+  <body>
+    <div id="outerContainer">
+
+      <div id="sidebarContainer">
+        <div id="toolbarSidebar">
+          <div class="splitToolbarButton toggled">
+            <button data-l10n-id="thumbs" tabindex="2" title="Show Thumbnails" class="toolbarButton group toggled" id="viewThumbnail">
+               <span data-l10n-id="thumbs_label">Thumbnails</span>
+            </button>
+            <button data-l10n-id="outline" tabindex="3" title="Show Document Outline" class="toolbarButton group" id="viewOutline" disabled="">
+               <span data-l10n-id="outline_label">Document Outline</span>
+            </button>
+          </div>
+        </div>
+        <div id="sidebarContent">
+          <div id="thumbnailView"><a href="file:///G:/poc-printer/view-pdf/sample.pdf#page=1" title="Page 1"><div id="thumbnailContainer1" class="thumbnail selected" data-loaded="true"><div class="thumbnailSelectionRing" style="width: 98px; height: 126.824px;"><canvas id="thumbnail1" width="98" height="126" class="thumbnailImage" aria-label="Thumbnail of Page 1"></canvas></div></div></a></div>
+          <div class="hidden" id="outlineView"></div>
+        </div>
+      </div>  <!-- sidebarContainer -->
+
+      <div id="mainContainer">
+        <div id="findbar" class="findbar hidden doorHanger hiddenSmallView">
+          <label data-l10n-id="find_label" class="toolbarLabel" for="findInput">Find:</label>
+          <input tabindex="21" class="toolbarField" id="findInput">
+          <div class="splitToolbarButton">
+            <button data-l10n-id="find_previous" tabindex="22" id="findPrevious" title="Find the previous occurrence of the phrase" class="toolbarButton findPrevious">
+              <span data-l10n-id="find_previous_label">Previous</span>
+            </button>
+            <div class="splitToolbarButtonSeparator"></div>
+            <button data-l10n-id="find_next" tabindex="23" id="findNext" title="Find the next occurrence of the phrase" class="toolbarButton findNext">
+              <span data-l10n-id="find_next_label">Next</span>
+            </button>
+          </div>
+          <input type="checkbox" class="toolbarField" id="findHighlightAll">
+          <label data-l10n-id="find_highlight" tabindex="24" class="toolbarLabel" for="findHighlightAll">Highlight all</label>
+          <input type="checkbox" class="toolbarField" id="findMatchCase">
+          <label data-l10n-id="find_match_case_label" tabindex="25" class="toolbarLabel" for="findMatchCase">Match case</label>
+          <span class="toolbarLabel" id="findMsg"></span>
+        </div>
+        <div class="toolbar">
+          <div id="toolbarContainer">
+            <div id="toolbarViewer">
+              <div id="toolbarViewerLeft">
+                <button data-l10n-id="toggle_sidebar" tabindex="4" title="Toggle Sidebar" class="toolbarButton" id="sidebarToggle">
+                  <span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
+                </button>
+                <div class="toolbarButtonSpacer"></div>
+                <button data-l10n-id="findbar" tabindex="5" title="Find in Document" class="toolbarButton group hiddenSmallView" id="viewFind">
+                   <span data-l10n-id="findbar_label">Find</span>
+                </button>
+                <div class="splitToolbarButton">
+                  <button data-l10n-id="previous" tabindex="6" id="previous" title="Previous Page" class="toolbarButton pageUp" disabled="">
+                    <span data-l10n-id="previous_label">Previous</span>
+                  </button>
+                  <div class="splitToolbarButtonSeparator"></div>
+                  <button data-l10n-id="next" tabindex="7" id="next" title="Next Page" class="toolbarButton pageDown" disabled="">
+                    <span data-l10n-id="next_label">Next</span>
+                  </button>
+                </div>
+                <label data-l10n-id="page_label" for="pageNumber" class="toolbarLabel" id="pageNumberLabel">Page:</label>
+                <input type="number" tabindex="8" min="1" size="4" value="1" class="toolbarField pageNumber" id="pageNumber" max="1">
+                
+                <span class="toolbarLabel" id="numPages">of 1</span>
+              </div>
+              <div id="toolbarViewerRight">
+                <input type="file" style="visibility: hidden; position: fixed; right: 0; top: 0" oncontextmenu="return false;" class="fileInput" id="fileInput">
+
+                <button data-l10n-id="presentation_mode" tabindex="12" title="Switch to Presentation Mode" class="toolbarButton fullscreen hiddenSmallView hidden" id="fullscreen">
+                  <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+                </button>
+
+                <button hidden="true" data-l10n-id="open_file" tabindex="13" title="Open File" class="toolbarButton openFile hiddenSmallView" id="openFile">
+                   <span data-l10n-id="open_file_label">Open</span>
+                </button>
+
+                <button data-l10n-id="print" tabindex="14" title="Print" class="toolbarButton print" id="print">
+                  <span data-l10n-id="print_label">Print</span>
+                </button>
+
+                <button data-l10n-id="download" tabindex="15" title="Download" class="toolbarButton download" id="download">
+                  <span data-l10n-id="download_label">Download</span>
+                </button>
+                <!-- <div class="toolbarButtonSpacer"></div> -->
+                <a data-l10n-id="bookmark" tabindex="16" title="Current view (copy or open in new window)" class="toolbarButton bookmark hiddenSmallView" id="viewBookmark" href="file:///G:/poc-printer/view-pdf/sample.pdf#page=1&amp;zoom=auto,0,800"><span data-l10n-id="bookmark_label">Current View</span></a>
+              </div>
+              <div class="outerCenter">
+                <div id="toolbarViewerMiddle" class="innerCenter">
+                  <div class="splitToolbarButton">
+                    <button data-l10n-id="zoom_out" tabindex="9" title="Zoom Out" id="zoom_out" class="toolbarButton zoomOut">
+                      <span data-l10n-id="zoom_out_label">Zoom Out</span>
+                    </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button data-l10n-id="zoom_in" tabindex="10" title="Zoom In" id="zoom_in" class="toolbarButton zoomIn">
+                      <span data-l10n-id="zoom_in_label">Zoom In</span>
+                     </button>
+                  </div>
+                  <span class="dropdownToolbarButton" id="scaleSelectContainer" style="min-width: 119px; max-width: 119px;">
+                     <select data-l10n-id="zoom" tabindex="11" oncontextmenu="return false;" title="Zoom" id="scaleSelect" style="min-width: 139px;">
+                      <option data-l10n-id="page_scale_auto" selected="selected" value="auto" id="pageAutoOption">Automatic Zoom</option>
+                      <option data-l10n-id="page_scale_actual" value="page-actual" id="pageActualOption">Actual Size</option>
+                      <option data-l10n-id="page_scale_fit" value="page-fit" id="pageFitOption">Page Fit</option>
+                      <option data-l10n-id="page_scale_width" value="page-width" id="pageWidthOption">Page Width</option>
+                      <option value="custom" id="customScaleOption"></option>
+                      <option value="0.5">50%</option>
+                      <option value="0.75">75%</option>
+                      <option value="1">100%</option>
+                      <option value="1.25">125%</option>
+                      <option value="1.5">150%</option>
+                      <option value="2">200%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <menu id="viewerContextMenu" type="context">
+          <menuitem data-l10n-id="first_page" id="first_page" label="Go to First Page"></menuitem>
+          <menuitem data-l10n-id="last_page" id="last_page" label="Go to Last Page"></menuitem>
+          <menuitem data-l10n-id="page_rotate_ccw" id="page_rotate_ccw" label="Rotate Counterclockwise"></menuitem>
+          <menuitem data-l10n-id="page_rotate_cw" id="page_rotate_cw" label="Rotate Clockwise"></menuitem>
+        </menu>
+
+        <div tabindex="1" id="viewerContainer">
+          <div contextmenu="viewerContextMenu" id="viewer"><a name="1"></a><div id="pageContainer1" class="page" style="width: 816px; height: 1056px;" data-loaded="true"><div style="width: 816px; height: 1056px;" class="canvasWrapper"><canvas id="page1" width="816" height="1056"></canvas></div><div class="textLayer" style="width: 816px; height: 1056px;"><div data-canvas-width="240.86399999999998" data-font-name="g_font_p0_1" style="font-size: 48px; font-family: sans-serif; left: 96px; top: 93.3333px; transform: scale(0.885529, 1); transform-origin: 0% 0% 0px;" dir="ltr">Sample PDF</div><div data-canvas-width="378.67200000000025" data-font-name="g_font_p0_2" style="font-size: 24px; font-family: sans-serif; left: 96px; top: 152px; transform: scale(0.930398, 1); transform-origin: 0% 0% 0px;" dir="ltr">This is a simple PDF file. Fun fun fun.</div><div data-canvas-width="628.5120000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 201.333px; transform: scale(0.989783, 1); transform-origin: 0% 0% 0px;" dir="ltr">Lorem ipsum dolor  sit amet,  consectetuer  adipiscing elit.  Phasellus  facilisis odio  sed mi. </div><div data-canvas-width="628.608" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 221.333px; transform: scale(1.01225, 1); transform-origin: 0% 0% 0px;" dir="ltr">Curabitur suscipit. Nullam vel nisi. Etiam semper ipsum ut lectus. Proin  aliquam, erat eget </div><div data-canvas-width="628.592" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 241.333px; transform: scale(1.0106, 1); transform-origin: 0% 0% 0px;" dir="ltr">pharetra  commodo,  eros  mi  condimentum   quam,  sed  commodo  justo  quam  ut  velit. </div><div data-canvas-width="628.5280000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 261.333px; transform: scale(1.02533, 1); transform-origin: 0% 0% 0px;" dir="ltr">Integer  a  erat.   Cras  laoreet  ligula  cursus  enim.   Aenean   scelerisque  velit  et  tellus. </div><div data-canvas-width="628.5120000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 281.333px; transform: scale(0.987864, 1); transform-origin: 0% 0% 0px;" dir="ltr">Vestibulum  dictum aliquet sem.  Nulla  facilisi.  Vestibulum  accumsan  ante  vitae  elit.  Nulla </div><div data-canvas-width="628.5759999999998" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 301.333px; transform: scale(0.99737, 1); transform-origin: 0% 0% 0px;" dir="ltr">erat  dolor,  blandit  in,  rutrum  quis,  semper  pulvinar,  enim.  Nullam   varius  congue  risus. </div><div data-canvas-width="628.5600000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 321.333px; transform: scale(1.00938, 1); transform-origin: 0% 0% 0px;" dir="ltr">Vivamus  sollicitudin,  metus  ut  interdum   eleifend,  nisi  tellus  pellentesque  elit,  tristique </div><div data-canvas-width="628.56" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 341.333px; transform: scale(0.985204, 1); transform-origin: 0% 0% 0px;" dir="ltr">accumsan  eros  quam   et  risus.  Suspendisse  libero  odio,  mattis  sit  amet,  aliquet  eget, </div><div data-canvas-width="628.576" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 361.333px; transform: scale(1.00572, 1); transform-origin: 0% 0% 0px;" dir="ltr">hendrerit vel,  nulla. Sed vitae  augue. Aliquam  erat volutpat. Aliquam feugiat vulputate nisl. </div><div data-canvas-width="628.6720000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 381.333px; transform: scale(0.999479, 1); transform-origin: 0% 0% 0px;" dir="ltr">Suspendisse quis nulla pretium ante pretium mollis. Proin  velit ligula, sagittis at, egestas a, </div><div data-canvas-width="121.47199999999998" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 401.333px; transform: scale(1.0039, 1); transform-origin: 0% 0% 0px;" dir="ltr">pulvinar quis, nisl.</div><div data-canvas-width="628.576" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 441.333px; transform: scale(1.00393, 1); transform-origin: 0% 0% 0px;" dir="ltr">Pellentesque  sit  amet  lectus.  Praesent  pulvinar,  nunc  quis  iaculis  sagittis,  justo  quam </div><div data-canvas-width="628.528" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 461.333px; transform: scale(0.98652, 1); transform-origin: 0% 0% 0px;" dir="ltr">lobortis  tortor,  sed  vestibulum dui  metus  venenatis  est.  Nunc  cursus  ligula.  Nulla facilisi. </div><div data-canvas-width="628.576" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 481.333px; transform: scale(1.01383, 1); transform-origin: 0% 0% 0px;" dir="ltr">Phasellus ullamcorper consectetuer ante. Duis tincidunt, urna id condimentum  luctus, nibh </div><div data-canvas-width="628.5760000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 501.333px; transform: scale(0.985229, 1); transform-origin: 0% 0% 0px;" dir="ltr">ante  vulputate  sapien,  id  sagittis  massa  orci  ut  enim.  Pellentesque  vestibulum convallis </div><div data-canvas-width="628.56" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 521.333px; transform: scale(0.989858, 1); transform-origin: 0% 0% 0px;" dir="ltr">sem.  Nulla consequat  quam ut  nisl.  Nullam est.  Curabitur  tincidunt  dapibus  lorem.  Proin </div><div data-canvas-width="628.592" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 541.333px; transform: scale(0.985254, 1); transform-origin: 0% 0% 0px;" dir="ltr">velit  turpis,  scelerisque  sit  amet,  iaculis  nec,  rhoncus  ac,  ipsum.  Phasellus  lorem  arcu, </div><div data-canvas-width="628.4800000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 561.333px; transform: scale(1.02026, 1); transform-origin: 0% 0% 0px;" dir="ltr">feugiat  eu,  gravida  eu,  consequat  molestie,  ipsum.  Nullam  vel  est  ut  ipsum  volutpat </div><div data-canvas-width="203.02400000000006" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 581.333px; transform: scale(0.990361, 1); transform-origin: 0% 0% 0px;" dir="ltr">feugiat. Aenean pellentesque.</div><div data-canvas-width="628.608" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 621.333px; transform: scale(0.989934, 1); transform-origin: 0% 0% 0px;" dir="ltr">In  mauris.  Pellentesque  dui  nisi,  iaculis eu,  rhoncus in,  venenatis ac,  ante.  Ut odio justo, </div><div data-canvas-width="628.576" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 641.333px; transform: scale(0.986776, 1); transform-origin: 0% 0% 0px;" dir="ltr">scelerisque vel,  facilisis  non,  commodo  a,  pede.  Cras nec  massa sit amet tortor volutpat </div><div data-canvas-width="628.576" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 661.333px; transform: scale(0.993011, 1); transform-origin: 0% 0% 0px;" dir="ltr">varius.  Donec  lacinia, neque  a luctus aliquet, pede  massa imperdiet ante,  at varius lorem </div><div data-canvas-width="628.5440000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 681.333px; transform: scale(0.971474, 1); transform-origin: 0% 0% 0px;" dir="ltr">pede  sed  sapien.  Fusce  erat nibh,  aliquet in,  eleifend  eget,  commodo  eget,  erat.  Fusce </div><div data-canvas-width="628.608" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 701.333px; transform: scale(0.978607, 1); transform-origin: 0% 0% 0px;" dir="ltr">consectetuer.  Cras risus tortor,  porttitor  nec,  tristique  sed,  convallis  semper,  eros.  Fusce </div><div data-canvas-width="628.544" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 721.333px; transform: scale(0.988277, 1); transform-origin: 0% 0% 0px;" dir="ltr">vulputate  ipsum a mauris.  Phasellus mollis.  Curabitur  sed  urna.  Aliquam nec  sapien  non </div><div data-canvas-width="628.5440000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 741.333px; transform: scale(0.985616, 1); transform-origin: 0% 0% 0px;" dir="ltr">nibh  pulvinar  convallis.  Vivamus  facilisis  augue  quis  quam.  Proin  cursus  aliquet  metus. </div><div data-canvas-width="628.4960000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 761.333px; transform: scale(0.989757, 1); transform-origin: 0% 0% 0px;" dir="ltr">Suspendisse  lacinia.  Nulla  at tellus ac turpis eleifend scelerisque.  Maecenas a pede vitae </div><div data-canvas-width="476.5439999999999" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 781.333px; transform: scale(1.00114, 1); transform-origin: 0% 0% 0px;" dir="ltr">enim commodo interdum. Donec odio. Sed sollicitudin dui vitae justo.</div><div data-canvas-width="628.5760000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 821.333px; transform: scale(0.996158, 1); transform-origin: 0% 0% 0px;" dir="ltr">Morbi  elit nunc, facilisis a, mollis a, molestie at,  lectus.  Suspendisse eget mauris eu  tellus </div><div data-canvas-width="628.4799999999999" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 841.333px; transform: scale(0.983537, 1); transform-origin: 0% 0% 0px;" dir="ltr">molestie  cursus.  Duis  ut  magna   at  justo  dignissim  condimentum.  Cum   sociis  natoque </div><div data-canvas-width="628.512" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 861.333px; transform: scale(1.01748, 1); transform-origin: 0% 0% 0px;" dir="ltr">penatibus et magnis dis parturient montes,  nascetur ridiculus mus.  Vivamus varius. Ut sit </div><div data-canvas-width="628.5760000000001" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 881.333px; transform: scale(0.980618, 1); transform-origin: 0% 0% 0px;" dir="ltr">amet  diam suscipit mauris  ornare  aliquam.  Sed  varius.  Duis arcu.  Etiam tristique  massa </div><div data-canvas-width="628.576" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 901.333px; transform: scale(0.99774, 1); transform-origin: 0% 0% 0px;" dir="ltr">eget dui.  Phasellus congue.  Aenean  est erat, tincidunt eget, venenatis quis,  commodo at, </div><div data-canvas-width="43.856" data-font-name="g_font_p0_3" style="font-size: 16px; font-family: sans-serif; left: 96px; top: 921.333px; transform: scale(1.01991, 1); transform-origin: 0% 0% 0px;" dir="ltr">quam.</div></div></div></div>
+        </div>
+
+        <div hidden="true" id="loadingBox">
+          <div id="loading"></div>
+          <div id="loadingBar"><div class="progress" style="height: 100%;"></div></div>
+        </div>
+
+        <div hidden="true" id="errorWrapper">
+          <div id="errorMessageLeft">
+            <span id="errorMessage"></span>
+            <button data-l10n-id="error_more_info" oncontextmenu="return false;" onclick="" id="errorShowMore">More Information</button>
+            <button hidden="true" data-l10n-id="error_less_info" oncontextmenu="return false;" onclick="" id="errorShowLess">Less Information</button>
+          </div>
+          <div id="errorMessageRight">
+            <button data-l10n-id="error_close" oncontextmenu="return false;" id="errorClose">Close</button>
+          </div>
+          <div class="clearBoth"></div>
+          <textarea hidden="true" readonly="readonly" id="errorMoreInfo"></textarea>
+        </div>
+      </div> <!-- mainContainer -->
+
+    </div> <!-- outerContainer -->
+    <div id="printContainer"></div>
+  
+
+
+</body></html>
