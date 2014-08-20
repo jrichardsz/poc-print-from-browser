@@ -3,7 +3,7 @@ poc-print-from-browser
 
 Tests to print from a browser without applets.
 
-Also allow a web application to print silently or select a printer:
+Also allow a web application to print silently or select a printer without applet, flash activex, etc :
 
 * http://stackoverflow.com/questions/21908/silent-printing-in-a-web-application
 * http://jsprintsetup.mozdev.org/reference.html
