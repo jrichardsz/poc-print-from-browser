@@ -1,7 +1,7 @@
-Print from Browser
+poc-print-from-browser
 ===============================================
 
-Here my tests to print from a browser
+Tests to print from a browser without applets.
 
 Also allow a web application to print silently or select a printer without applet, flash activex, etc :
 
